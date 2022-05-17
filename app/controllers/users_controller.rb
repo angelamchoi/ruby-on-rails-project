@@ -1,9 +1,9 @@
-class UsersController < ApplicationController
+class UsersController < ApplicationController #inheritance
   before_action :set_user, only: %i[ show edit update destroy ]
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    @users = User.all 
   end
 
   # GET /users/1 or /users/1.json
@@ -68,3 +68,8 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email)
     end
 end
+
+# Notes
+# @users = asks User model to retrieve a list of all users from DB
+# User.all = returns all users from the DB
+# instance varaibles = variables with @sign
