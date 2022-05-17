@@ -11,3 +11,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 end
+
+# Notes
+# - gets URL and verifies that the result is success
+# - the get tests expect the Home and Help pages using GET request
