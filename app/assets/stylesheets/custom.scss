@@ -3,18 +3,18 @@
 
 /* universal */
 body {
-  padding-top: 60px;
+  padding-top: 160px;
   }
-  section {
+section {
   overflow: auto;
   }
-  textarea {
+textarea {
   resize: vertical;
   }
-  .center {
+.center {
   text-align: center;
   }
-  .center h1 {
+.center h1 {
   margin-bottom: 10px;
   }
 
@@ -22,21 +22,27 @@ body {
 h1, h2, h3, h4, h5, h6 {
 line-height: 1;
 }
+
 h1 {
 font-size: 3em;
 letter-spacing: -2px;
 margin-bottom: 30px;
 text-align: center;
-background-color: red;
 }
+
 h2 {
 font-size: 1.2em;
 letter-spacing: -1px;
 margin-bottom: 30px;
 text-align: center;
 font-weight: normal;
+color: #777;
 }
 
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+  }
 
 /* header */
 #logo {
