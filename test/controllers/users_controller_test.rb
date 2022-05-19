@@ -5,6 +5,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @user = users(:one)
   end
 
+  test "should get new" do
+    get signup_path
+    assert_response :success
+  end
+
   test "should get index" do
     get users_url
     assert_response :success

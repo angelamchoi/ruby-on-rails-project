@@ -1,5 +1,8 @@
 class UsersController < ApplicationController #inheritance
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy]
+
+  def new 
+  end
 
   # GET /users or /users.json
   def index
