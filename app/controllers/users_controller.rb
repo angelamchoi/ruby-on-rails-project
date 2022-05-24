@@ -40,7 +40,6 @@ private
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
-
   
 
   # PATCH/PUT /users/1 or /users/1.json
