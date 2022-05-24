@@ -1,5 +1,8 @@
 class UsersController < ApplicationController #inheritance
-  before_action :set_user, only: %i[ show edit update destroy]
+  # before_action :set_user, only: %i[ show edit update destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  # before_action :correct_user, only: [:edit, :update]
+  # before_action :admin_user,   only: :destroy
 
   def new 
   end
@@ -27,7 +30,7 @@ class UsersController < ApplicationController #inheritance
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "   YOU'RE IN!!! :)"
       redirect_to @user
       # redirect_to user_url(@user) <-- same thing as above
     else 
