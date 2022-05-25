@@ -70,13 +70,10 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
+    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
-    bootstrap (5.1.3)
-      autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 2.9.3, < 3)
-      sassc-rails (>= 2.0.0)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
@@ -141,7 +138,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.6-x64-mingw32)
       racc (~> 1.4)
-    popper_js (2.9.3)
     public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
@@ -183,12 +179,6 @@ GEM
     rubyzip (2.3.2)
     sassc (2.4.0-x64-mingw32)
       ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -205,7 +195,6 @@ GEM
       railties (>= 6.0.0)
     strscan (3.0.3)
     thor (1.2.1)
-    tilt (2.0.10)
     timeout (0.2.0)
     turbo-rails (1.0.1)
       actionpack (>= 6.0.0)
@@ -234,8 +223,8 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  bcrypt (~> 3.1.13)
   bootsnap
-  bootstrap (~> 5.1, >= 5.1.3)
   bootstrap-sass (~> 3.4.1)
   capybara
   debug
@@ -243,7 +232,6 @@ DEPENDENCIES
   jbuilder
   puma (~> 5.0)
   rails (~> 7.0.3)
-  sassc-rails (>= 2.1.0)
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)

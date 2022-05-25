@@ -30,6 +30,8 @@ class UsersController < ApplicationController #inheritance
   def create
     @user = User.new(user_params)
     if @user.save
+      reset_session
+      log_in @user
       flash[:success] = "   YOU'RE IN!!! :)"
       redirect_to @user
       # redirect_to user_url(@user) <-- same thing as above
