@@ -36,6 +36,16 @@ class UsersController < ApplicationController #inheritance
     end
   end
 
+    # PATCH/PUT /users/1 or /users/1.json
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      # Handle successful update
+    else
+      render 'edit'
+    end
+  end
+
 private 
 
     def user_params
@@ -43,18 +53,6 @@ private
     end
   
 
-  # PATCH/PUT /users/1 or /users/1.json
-  def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # DELETE /users/1 or /users/1.json
   def destroy
