@@ -163,12 +163,13 @@ input {
 /* footer */
 
 @media (max-width: 800px) {
-  footer {small {
+  footer {
+    small {
     display: block;
     float: none;
     margin-bottom: 1em;
-    }u
-    l {
+    }
+    ul {
     float: none;
     padding: 0;
     li {
