@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :microposts
+  has_many :microposts, dependent: :destroy # if user is destroyed then post is also destroyed
 
   attr_accessor :remember_token, :activation_token
   before_save { self.email = email.downcase }
