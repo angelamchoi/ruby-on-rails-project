@@ -1,7 +1,7 @@
 class UsersController < ApplicationController #inheritance
   before_action :logged_in_user, only: [:index, :edit, :update, :destory]
   # before_action :correct_user, only: [:edit, :update]
-  # before_action :admin_user, only: :destory
+  before_action :admin_user, only: :destory
 
 
   # GET /users or /users.json
@@ -13,6 +13,7 @@ class UsersController < ApplicationController #inheritance
   # GET /users/1 or /users/1.json
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page] )
   end
 
   # GET /users/new
@@ -54,7 +55,7 @@ class UsersController < ApplicationController #inheritance
     # DELETE /users/1 or /users/1.json
     def destroy
       @user = User.find(params[:id]).destroy
-      flash[:success] = "#{@user.name} deleted"
+      flash[:success] = "  #{@user.name} deleted"
       redirect_to users_path
     end
 
@@ -73,7 +74,7 @@ private
   
     def logged_in_user
       unless logged_in?
-        flash[:danger] = "   Please log in."
+        flash= "   Please log in."
         redirect_to login_url
       end
     end
