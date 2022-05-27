@@ -1,6 +1,7 @@
 class UsersController < ApplicationController #inheritance
-  # before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destory]
   # before_action :correct_user, only: [:edit, :update]
+  # before_action :admin_user, only: :destory
 
 
   # GET /users or /users.json
@@ -50,6 +51,20 @@ class UsersController < ApplicationController #inheritance
     end
   end
 
+    # DELETE /users/1 or /users/1.json
+    def destroy
+      @user = User.find(params[:id]).destroy
+      flash[:success] = "#{@user.name} deleted"
+      redirect_to users_path
+    end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+
+
+  
+
 private 
 
     def user_params
@@ -58,20 +73,10 @@ private
   
     def logged_in_user
       unless logged_in?
-        flash[:danger] = "Please log in."
+        flash[:danger] = "   Please log in."
         redirect_to login_url
       end
     end
-
-  # DELETE /users/1 or /users/1.json
-  def destroy
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -83,7 +88,7 @@ private
     def user_params
       params.require(:user).permit(:name, :email)
     end
-end
+  end
 
 # Notes
 # @users = asks User model to retrieve a list of all users from DB
