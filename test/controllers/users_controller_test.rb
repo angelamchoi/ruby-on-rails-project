@@ -1,8 +1,10 @@
 require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @user = users(:one)
+  
+  def setup
+    @user = users(:michael)
+    @other_user = users(:archer)
   end
 
   test "should get new" do
@@ -33,14 +35,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
+  test "should redirect edit when logged in as wrong user" do
     get edit_user_url(@user)
-    assert_response :success
+    assert_not flash.empty?
+    assert_redirected_to login_url
   end
 
-  test "should update user" do
+  test "should redirect update whenlogged in as wrong user" do
     patch user_url(@user), params: { user: { email: @user.email, name: @user.name } }
-    assert_redirected_to user_url(@user)
+    assert_not flash.empty?
+    assert_redirected_to login url
   end
 
   test "should destroy user" do
