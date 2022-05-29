@@ -20,19 +20,30 @@ class MicropostsController < ApplicationController
   end
 
   # POST /microposts or /microposts.json
+  # def create
+  #   @micropost = Micropost.new(micropost_params)
   def create
-    @micropost = Micropost.new(micropost_params)
-
-    respond_to do |format|
-      if @micropost.save
-        format.html { redirect_to micropost_url(@micropost), notice: "Micropost was successfully created." }
-        format.json { render :show, status: :created, location: @micropost }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @micropost.errors, status: :unprocessable_entity }
-      end
+    @micropost = current_user.microposts.build(micropost_params)
+    if @micropost.save 
+        flash[:success] = "Micropost created!"
+        redirect_to root_url
+    else 
+        @feed_items = current_user.feed.paginate(page: params[:page])
+        render 'static_pages/home'
     end
-  end
+end
+
+def destroy
+    @micropost.destroy
+    flash[:success] = "Micropost deleted"
+    if request.referrer.nil? || request.referrer == microposts_url
+        redirect_to root_url
+    else
+        redirect_to request.referrer
+    end
+end
+
+
 
   # PATCH/PUT /microposts/1 or /microposts/1.json
   def update
@@ -48,20 +59,25 @@ class MicropostsController < ApplicationController
   end
 
   # DELETE /microposts/1 or /microposts/1.json
-  def destroy
-    @micropost.destroy
+  # def destroy
+  #   @micropost.destroy
 
-    respond_to do |format|
-      format.html { redirect_to microposts_url, notice: "Micropost was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html { redirect_to microposts_url, notice: "Micropost was successfully destroyed." }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_micropost
       @micropost = Micropost.find(params[:id])
     end
+
+    def correct_user
+      @micropost = current_user.microposts.find_by(id: params[:id])
+      redirect_to root_url if @micropost.nil?
+  end
 
     # Only allow a list of trusted parameters through.
     def micropost_params

@@ -28,6 +28,20 @@ class UserTest < ActiveSupport::TestCase
     @user.email "a" * 244 + "@example.com"
     assert_not @user.valid?
   end
+
+  test "should follow and unfollow a user" do
+    michael = users(:michael)
+    archer = users(:archer)
+    assert_not michael.following?(archer)
+    michael.follow(archer)
+    assert michael.following?(archer)
+    assert archer.followers.include?(michael)
+    michael.unfollow(archer)
+    assert_not michael.following?(archer)
+    # Users can't follow themselves.
+    michael.follow(michael)
+    assert_not michael.following?(michael)
+  end
   
   test "email validation should accept valid addresses" do
     valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org first.last@foo.jp alice+bob@baz.cn]
