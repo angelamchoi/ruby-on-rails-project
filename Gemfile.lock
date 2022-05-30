@@ -146,6 +146,7 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.6-x64-mingw32)
       racc (~> 1.4)
+    pg (1.2.3-x64-mingw32)
     public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
@@ -242,6 +243,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-rails
+  pg (= 1.2.3)
   puma (~> 5.0)
   rails (~> 7.0.3)
   selenium-webdriver
