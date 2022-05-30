@@ -6,6 +6,21 @@ ruby "2.7.6"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3"
 
+gem 'pg',  '1.2.3'
+# gem 'sqlite3', '~> 1.4'
+
+gem "puma", "~> 5.0"
+
+gem 'sass-rails', "~>6.0.0"
+
+gem 'webpacker', "~>5.4.0"
+
+gem 'turbolinks', "~>5.2.1"
+
+gem 'jbuilder', "~>2.10.0"
+
+gem "bootsnap", require: false
+
 gem 'bcrypt','~> 3.1.13'
 
 gem 'faker', '~> 2.11.0'
@@ -24,22 +39,20 @@ gem 'jquery-rails'
 gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+# gem "sqlite3", "~> 1.4"
 
-# Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
 
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
 
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+# # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+# gem "importmap-rails"
 
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
+# # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+# gem "turbo-rails"
 
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
+# # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+# gem "stimulus-rails"
+
+
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -54,7 +67,7 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+
 
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -63,19 +76,22 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
+
+
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
+  gem "rack-mini-profiler"
+
+  gem "listen"
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  gem "spring"
 end
 
 group :test do
@@ -84,6 +100,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
 
 group :production do
   gem 'pg', '1.2.3'
