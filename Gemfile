@@ -6,8 +6,8 @@ ruby "2.7.6"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3"
 
-gem 'pg',  '1.2.3'
-# gem 'sqlite3', '~> 1.4'
+# gem 'pg',  '1.2.3'
+gem 'sqlite3', '~> 1.4'
 
 gem "puma", "~> 5.0"
 
@@ -102,6 +102,6 @@ group :test do
 end
 
 
-group :production do
-  gem 'pg', '1.2.3'
-end
+# group :production do
+#   gem 'pg', '1.2.3'
+# end
